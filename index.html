@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Drive Link Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        input[type="text"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .output {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Google Drive Link Converter</h2>
+    <p>Enter your Google Drive link:</p>
+    <input type="text" id="inputLink" placeholder="Enter link...">
+    <input type="submit" value="Convert" onclick="convertLink()">
+    <div class="output" id="outputLink"></div>
+</div>
+
+<script>
+    function convertLink() {
+        const inputLink = document.getElementById("inputLink").value;
+        const fileId = inputLink.match(/\/file\/d\/([^/]+)/)[1];
+        const outputLink = `https://drive.google.com/uc?id=${fileId}&export=download`;
+        document.getElementById("outputLink").innerText = outputLink;
+    }
+</script>
+
+</body>
+</html>
